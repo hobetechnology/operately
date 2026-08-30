@@ -1942,6 +1942,7 @@ defmodule OperatelyWeb.Api.Types do
     field? :updated_at, :date, null: true
     field? :closed_at, :datetime, null: true
     field? :due_date, :contextual_date, null: true
+    field? :start_date, :contextual_date, null: true
     field? :reminders, list_of(:task_reminder), null: true
     field? :size, :string, null: true
     field? :priority, :string, null: true

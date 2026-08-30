@@ -43,6 +43,8 @@ export function getTemplateTaskPageProps(
     statusOptions: ctx.statuses,
     dueDate: undefined,
     onDueDateChange: () => undefined,
+    startDate: undefined,
+    onStartDateChange: () => undefined,
     dueOffsetDays: task.dueOffsetDays,
     onDueOffsetDaysChange: (dueOffsetDays) => patch({ dueOffsetDays }),
     reminders: [],

@@ -61,6 +61,7 @@ export function useSpaceTasksForTurboUi({ backendTasks, space, cacheKey, refresh
       status: task.status ?? null,
       assignees: task.assignees,
       dueDate: task.dueDate || null,
+      startDate: null,
       milestone: null,
       type: "space",
     };
@@ -149,6 +150,31 @@ export function useSpaceTasksForTurboUi({ backendTasks, space, cacheKey, refresh
     } catch (e) {
       console.error("Failed to update task due date", e);
       showErrorToast("Error", "Failed to update task due date");
+      restoreSnapshot(snapshot);
+      return false;
+    }
+  };
+
+  const updateTaskStartDate = async (taskId: string, startDate: DateField.ContextualDate | null) => {
+    const snapshot = createSnapshot();
+
+    setTasks((prev) =>
+      prev.map((t) => {
+        if (t.id === taskId) {
+          return { ...t, startDate };
+        }
+        return t;
+      }),
+    );
+
+    try {
+      await Api.tasks.updateStartDate({ taskId, startDate: serializeContextualDate(startDate), type: "space" });
+      await invalidateAndRefresh();
+
+      return true;
+    } catch (e) {
+      console.error("Failed to update task start date", e);
+      showErrorToast("Error", "Failed to update task start date");
       restoreSnapshot(snapshot);
       return false;
     }
@@ -282,6 +308,7 @@ export function useSpaceTasksForTurboUi({ backendTasks, space, cacheKey, refresh
     createTask,
     updateTaskName,
     updateTaskDueDate,
+    updateTaskStartDate,
     updateTaskReminders,
     updateTaskAssignee,
     updateTaskStatus,

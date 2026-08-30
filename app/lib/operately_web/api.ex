@@ -174,6 +174,7 @@ defmodule OperatelyWeb.Api do
         mutation(:update_name, OperatelyWeb.Api.Tasks.UpdateName)
         mutation(:update_status, OperatelyWeb.Api.Tasks.UpdateStatus)
         mutation(:update_due_date, OperatelyWeb.Api.Tasks.UpdateDueDate)
+        mutation(:update_start_date, OperatelyWeb.Api.Tasks.UpdateStartDate)
         mutation(:update_reminders, OperatelyWeb.Api.Tasks.UpdateReminders)
         mutation(:update_assignee, OperatelyWeb.Api.Tasks.UpdateAssignee)
         mutation(:update_milestone, OperatelyWeb.Api.Tasks.UpdateMilestone)

@@ -273,6 +273,37 @@ defmodule OperatelyWeb.Api.Tasks do
     end
   end
 
+  defmodule UpdateStartDate do
+    @moduledoc """
+    Updates the start date of a task.
+    """
+
+    use TurboConnect.Mutation
+    use OperatelyWeb.Api.Helpers
+
+    inputs do
+      field :task_id, :id, null: false
+      field :start_date, :contextual_date, null: true
+      field :type, :task_type, null: false
+    end
+
+    outputs do
+      field :task, :task, null: false
+    end
+
+    def call(conn, inputs) do
+      conn
+      |> Steps.start_transaction()
+      |> Steps.find_task(inputs.task_id, inputs.type)
+      |> Steps.check_task_permissions(:can_edit)
+      |> Steps.update_task_start_date(inputs.start_date)
+      |> Steps.commit()
+      |> Steps.respond(fn changes ->
+        %{task: OperatelyWeb.Api.Serializer.serialize(changes.updated_task, level: :full)}
+      end)
+    end
+  end
+
   defmodule UpdateReminders do
     @moduledoc """
     Updates task due date reminder rules.
@@ -472,6 +503,7 @@ defmodule OperatelyWeb.Api.Tasks do
       field? :assignee_ids, list_of(:id), null: true
       field? :description, :json, null: true
       field :due_date, :contextual_date, null: true
+      field? :start_date, :contextual_date, null: true
       field? :status, :task_status, null: false
     end
 
@@ -727,6 +759,12 @@ defmodule OperatelyWeb.Api.Tasks do
       end)
     end
 
+    def update_task_start_date(multi, new_start_date) do
+      Ecto.Multi.update(multi, :updated_task, fn %{task: task} ->
+        Operately.Tasks.Task.changeset(task, %{start_date: new_start_date})
+      end)
+    end
+
     def update_task_reminders(multi, reminders) do
       Ecto.Multi.run(multi, :updated_task, fn _repo, %{task: task} ->
         changeset = Operately.Tasks.Task.changeset(task, %{reminders: reminders})
@@ -944,6 +982,7 @@ defmodule OperatelyWeb.Api.Tasks do
             space_id: space_id,
             creator_id: changes.me.id,
             due_date: inputs.due_date,
+            start_date: inputs[:start_date],
             subscription_list_id: changes.subscription_list.id,
             task_status: status,
             status: status.value,

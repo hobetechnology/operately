@@ -17,6 +17,7 @@ defimpl OperatelyWeb.Api.Serializable, for: Operately.Tasks.Task do
       size: task.size,
       status: OperatelyWeb.Api.Serializer.serialize(task.task_status),
       due_date: OperatelyWeb.Api.Serializer.serialize(task.due_date),
+      start_date: OperatelyWeb.Api.Serializer.serialize(task.start_date),
       reminders: OperatelyWeb.Api.Serializer.serialize(task.reminders || []),
       inserted_at: OperatelyWeb.Api.Serializer.serialize(task.inserted_at),
       updated_at: OperatelyWeb.Api.Serializer.serialize(task.updated_at),

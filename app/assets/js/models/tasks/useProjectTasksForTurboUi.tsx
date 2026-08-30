@@ -123,6 +123,7 @@ export function useProjectTasksForTurboUi({
       status: task.status ?? null,
       assignees: task.assignees,
       dueDate: task.dueDate || null,
+      startDate: null,
       milestone: task.milestone,
       type: "project",
     };
@@ -208,6 +209,31 @@ export function useProjectTasksForTurboUi({
       .catch((e) => {
         console.error("Failed to update task due date", e);
         showErrorToast("Error", "Failed to update task due date");
+
+        return false;
+      });
+  };
+
+  const updateTaskStartDate = async (taskId: string, startDate: DateField.ContextualDate | null) => {
+    return Api.tasks
+      .updateStartDate({ taskId, startDate: serializeContextualDate(startDate), type: "project" })
+      .then(() => {
+        invalidateAndRefresh();
+
+        setTasks((prev) =>
+          prev.map((t) => {
+            if (t.id === taskId) {
+              return { ...t, startDate };
+            }
+            return t;
+          }),
+        );
+
+        return true;
+      })
+      .catch((e) => {
+        console.error("Failed to update task start date", e);
+        showErrorToast("Error", "Failed to update task start date");
 
         return false;
       });
@@ -483,6 +509,7 @@ export function useProjectTasksForTurboUi({
     setTasks,
     createTask,
     updateTaskDueDate,
+    updateTaskStartDate,
     updateTaskReminders,
     updateTaskAssignee,
     updateTaskName,

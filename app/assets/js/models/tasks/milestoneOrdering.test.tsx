@@ -34,6 +34,7 @@ const createTask = (id: string, milestoneId: string | null, options: { closed?: 
       }
     : null,
   dueDate: null,
+  startDate: null,
   hasDescription: false,
   hasComments: false,
   commentCount: 0,

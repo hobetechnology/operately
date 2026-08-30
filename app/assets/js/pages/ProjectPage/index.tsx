@@ -235,6 +235,7 @@ function Page() {
     createTask,
     updateTaskName,
     updateTaskDueDate,
+    updateTaskStartDate,
     updateTaskReminders,
     updateTaskAssignee,
     updateTaskDescription,
@@ -270,7 +271,7 @@ function Page() {
   const { statuses, handleSaveStatuses } = Projects.useTaskStatuses(project.id, project.taskStatuses, refresh);
 
   const handleTasksViewChange = React.useCallback(
-    async (tasksView: "list" | "board") => {
+    async (tasksView: "list" | "board" | "gantt") => {
       try {
         await Api.projects.updateTasksView({
           projectId: project.id,
@@ -346,6 +347,7 @@ function Page() {
     onTaskNameChange: updateTaskName,
     onTaskAssigneeChange: updateTaskAssignee,
     onTaskDueDateChange: updateTaskDueDate,
+    onTaskStartDateChange: updateTaskStartDate,
     onTaskRemindersChange: updateTaskReminders,
     onTaskStatusChange: handleTaskStatusChange,
     onTaskDescriptionChange: updateTaskDescription,
@@ -516,6 +518,7 @@ function Page() {
     onTaskCreate: createTask,
     onTaskNameChange: slideInModel.onTaskNameChange,
     onTaskDueDateChange: slideInModel.onTaskDueDateChange,
+    onTaskStartDateChange: slideInModel.onTaskStartDateChange,
     onTaskAssigneeChange: slideInModel.onTaskAssigneeChange,
     onTaskStatusChange: slideInModel.onTaskStatusChange,
     onTaskRemindersChange: slideInModel.onTaskRemindersChange,
@@ -541,7 +544,8 @@ function Page() {
 
     statuses,
     onSaveCustomStatuses: handleSaveStatuses,
-    tasksView: project.tasksView === "board" ? "board" : "list",
+    tasksView:
+      project.tasksView === "board" ? "board" : project.tasksView === "gantt" ? "gantt" : "list",
     onTasksViewChange: handleTasksViewChange,
 
     richTextHandlers: richEditorHandlers,

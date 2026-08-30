@@ -1,6 +1,6 @@
 import React from "react";
 import { Menu } from "../../Menu";
-import { IconAdjustmentsHorizontal, IconLayoutKanban, IconList } from "../../icons";
+import { IconAdjustmentsHorizontal, IconLayoutKanban, IconList, IconTimeline } from "../../icons";
 import classNames from "../../utils/classnames";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import * as Types from "../types";
@@ -40,7 +40,7 @@ export function TaskDisplayMenu({ mode, onChange, closedStatuses }: Props) {
         {hasLayoutOptions && onChange && (
           <div>
             <div className="mb-2 px-1 text-xs font-medium text-content-subtle">Layout</div>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-3 gap-2">
               <DropdownMenu.Item asChild>
                 <button
                   type="button"
@@ -74,6 +74,24 @@ export function TaskDisplayMenu({ mode, onChange, closedStatuses }: Props) {
                 >
                   <IconLayoutKanban size={20} />
                   <span className="text-sm font-semibold">Board</span>
+                </button>
+              </DropdownMenu.Item>
+
+              <DropdownMenu.Item asChild>
+                <button
+                  type="button"
+                  className={classNames(
+                    "flex flex-col items-center gap-1 px-4 py-3 rounded-md border border-surface-outline transition focus:outline-none",
+                    mode === "gantt"
+                      ? "bg-surface-highlight text-content-base"
+                      : "text-content-dimmed hover:bg-surface-dimmed",
+                  )}
+                  onClick={() => onChange("gantt")}
+                  aria-pressed={mode === "gantt"}
+                  data-test-id="display-menu-option-gantt"
+                >
+                  <IconTimeline size={20} />
+                  <span className="text-sm font-semibold">Gantt</span>
                 </button>
               </DropdownMenu.Item>
             </div>

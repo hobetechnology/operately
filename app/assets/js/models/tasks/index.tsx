@@ -49,6 +49,7 @@ export function parseTaskForTurboUi(paths: Paths, task: BackendTask, opts: Parse
     assignees: parsePeopleForTurboUi(paths, task.assignees || []),
     milestone: task.milestone ? parseMilestoneForTurboUi(paths, task.milestone) : null,
     dueDate: parseContextualDate(task.dueDate),
+    startDate: parseContextualDate(task.startDate),
     reminders: parseTaskReminders(task.reminders),
     closedAt: Time.parse(task.closedAt),
     hasDescription: richContentToString(description).trim().length > 0,

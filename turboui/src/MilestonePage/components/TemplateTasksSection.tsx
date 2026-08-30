@@ -133,6 +133,7 @@ function templateTasksAsBoardTasks(tasks: TemplateProjectPage.Task[]): Types.Tas
     milestone: null,
     description: null,
     dueDate: null,
+    startDate: null,
     type: "project",
   }));
 }

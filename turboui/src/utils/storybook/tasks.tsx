@@ -87,6 +87,7 @@ export function useMockTaskBoardActions(opts: {
           title: payload.title,
           status: statuses[0] ?? null,
           dueDate: payload.dueDate,
+          startDate: null,
           description: null,
           assignees: payload.assignees,
           link: "#",
@@ -211,6 +212,8 @@ export function useMockTaskBoardActions(opts: {
 
         dueDate: task.dueDate ?? undefined,
         onDueDateChange: (newDueDate) => ctx.onTaskDueDateChange?.(taskId, newDueDate),
+        startDate: task.startDate ?? undefined,
+        onStartDateChange: (newStartDate) => ctx.onTaskStartDateChange?.(taskId, newStartDate),
         reminders: task.reminders ?? [],
         onRemindersChange: (newReminders) => ctx.onTaskRemindersChange?.(taskId, newReminders) ?? false,
 

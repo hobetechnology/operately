@@ -2620,6 +2620,7 @@ export interface Task {
   updatedAt?: string | null;
   closedAt?: string | null;
   dueDate?: ContextualDate | null;
+  startDate?: ContextualDate | null;
   reminders?: TaskReminder[] | null;
   size?: string | null;
   priority?: string | null;
@@ -3012,7 +3013,7 @@ export type ProjectContributorRole = "champion" | "reviewer" | "contributor";
 
 export type ProjectTaskStatusColor = "gray" | "blue" | "green" | "red";
 
-export type ProjectTasksView = "list" | "board";
+export type ProjectTasksView = "list" | "board" | "gantt";
 
 export type ProjectTemplateArchiveStatus = "active" | "archived" | "all";
 
@@ -6316,6 +6317,7 @@ export interface TasksCreateInput {
   assigneeIds?: Id[] | null;
   description?: Json | null;
   dueDate: ContextualDate | null;
+  startDate?: ContextualDate | null;
   status?: TaskStatus;
 }
 
@@ -6375,6 +6377,16 @@ export interface TasksUpdateDueDateInput {
 }
 
 export interface TasksUpdateDueDateResult {
+  task: Task;
+}
+
+export interface TasksUpdateStartDateInput {
+  taskId: Id;
+  startDate: ContextualDate | null;
+  type: TaskType;
+}
+
+export interface TasksUpdateStartDateResult {
   task: Task;
 }
 
@@ -7258,6 +7270,10 @@ class ApiNamespaceTasks {
 
   async updateDueDate(input: TasksUpdateDueDateInput): Promise<TasksUpdateDueDateResult> {
     return this.client.post("/tasks/update_due_date", input);
+  }
+
+  async updateStartDate(input: TasksUpdateStartDateInput): Promise<TasksUpdateStartDateResult> {
+    return this.client.post("/tasks/update_start_date", input);
   }
 
   async updateMilestone(input: TasksUpdateMilestoneInput): Promise<TasksUpdateMilestoneResult> {
@@ -9170,6 +9186,11 @@ export default {
     useUpdateDueDate: () =>
       useMutation<TasksUpdateDueDateInput, TasksUpdateDueDateResult>((input) =>
         defaultApiClient.apiNamespaceTasks.updateDueDate(input),
+      ),
+    updateStartDate: (input: TasksUpdateStartDateInput) => defaultApiClient.apiNamespaceTasks.updateStartDate(input),
+    useUpdateStartDate: () =>
+      useMutation<TasksUpdateStartDateInput, TasksUpdateStartDateResult>((input) =>
+        defaultApiClient.apiNamespaceTasks.updateStartDate(input),
       ),
 
     updateName: (input: TasksUpdateNameInput) => defaultApiClient.apiNamespaceTasks.updateName(input),

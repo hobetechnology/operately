@@ -163,6 +163,7 @@ export namespace ProjectPage {
     onTaskNameChange: (taskId: string, name: string) => void;
     onTaskAssigneeChange: (taskId: string, assignees: TaskBoardTypes.Person[]) => void;
     onTaskDueDateChange: (taskId: string, dueDate: DateField.ContextualDate | null) => void;
+    onTaskStartDateChange?: (taskId: string, startDate: DateField.ContextualDate | null) => void;
     onTaskRemindersChange?: TaskBoardTypes.TaskBoardProps["onTaskRemindersChange"];
     onTaskStatusChange: (taskId: string, status: TaskBoardTypes.Status | null) => void;
     onTaskMilestoneChange?: (taskId: string, milestoneId: string | null, index: number) => void;

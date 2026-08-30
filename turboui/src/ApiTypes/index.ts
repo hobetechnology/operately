@@ -2500,6 +2500,7 @@ export interface Task {
   updatedAt?: string | null;
   closedAt?: string | null;
   dueDate?: ContextualDate | null;
+  startDate?: ContextualDate | null;
   reminders?: TaskReminder[] | null;
   size?: string | null;
   priority?: string | null;
@@ -2892,7 +2893,7 @@ export type ProjectContributorRole = "champion" | "reviewer" | "contributor";
 
 export type ProjectTaskStatusColor = "gray" | "blue" | "green" | "red";
 
-export type ProjectTasksView = "list" | "board";
+export type ProjectTasksView = "list" | "board" | "gantt";
 
 export type ProjectTemplateArchiveStatus = "active" | "archived" | "all";
 
