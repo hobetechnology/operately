@@ -12,6 +12,7 @@ import { SpaceField } from "../../SpaceField";
 import type { StatusSelector } from "../../StatusSelector";
 import { useLocation } from "react-router";
 import { useWorkMapTab } from "../hooks/useWorkMapTab";
+import { exportWorkMapToExcel } from "../utils/exportToExcel";
 import { AddItemModal } from "./AddItemModal";
 import { WorkMapTimeline } from "./WorkMapTimeline";
 import { WorkMapNavigation } from "./WorkMapNavigation";
@@ -56,6 +57,10 @@ export function WorkMap({
   const view = timelineAvailable && searchParams.get("view") === "timeline" ? "timeline" : "table";
   const firstProjectStateVisible = emptyStateVariant === "first-project" && items.length === 0 && addingEnabled;
 
+  const handleExport = React.useCallback(() => {
+    exportWorkMapToExcel(filteredItems, tab);
+  }, [filteredItems, tab]);
+
   return (
     <div className="flex flex-col w-full bg-surface-base rounded-lg">
       <header className="px-4 py-3 border-b border-surface-outline">
@@ -69,7 +74,12 @@ export function WorkMap({
       </header>
 
       {!firstProjectStateVisible && (
-        <WorkMapNavigation tabsState={tabsState} timelineAvailable={timelineAvailable} view={view} />
+        <WorkMapNavigation
+          tabsState={tabsState}
+          timelineAvailable={timelineAvailable}
+          view={view}
+          onExport={handleExport}
+        />
       )}
       <div className="flex-1 overflow-auto">
         {view === "timeline" ? (

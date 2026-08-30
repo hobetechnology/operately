@@ -66,6 +66,7 @@ import IconEye from "@tabler/icons-react/dist/esm/icons/IconEye.mjs";
 import IconFile from "@tabler/icons-react/dist/esm/icons/IconFile.mjs";
 import IconFileExport from "@tabler/icons-react/dist/esm/icons/IconFileExport.mjs";
 import IconFileFilled from "@tabler/icons-react/dist/esm/icons/IconFileFilled.mjs";
+import IconFileSpreadsheet from "@tabler/icons-react/dist/esm/icons/IconFileSpreadsheet.mjs";
 import IconFileText from "@tabler/icons-react/dist/esm/icons/IconFileText.mjs";
 import IconFileZip from "@tabler/icons-react/dist/esm/icons/IconFileZip.mjs";
 import IconFilter from "@tabler/icons-react/dist/esm/icons/IconFilter.mjs";
@@ -230,6 +231,7 @@ export {
   IconFile,
   IconFileExport,
   IconFileFilled,
+  IconFileSpreadsheet,
   IconFileText,
   IconFileZip,
   IconFilter,

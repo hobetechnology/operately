@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router";
-import { IconTable, IconTimeline } from "../../icons";
+import { SecondaryButton } from "../../Button";
+import { IconFileSpreadsheet, IconTable, IconTimeline } from "../../icons";
 import { Tabs, TabsState } from "../../Tabs";
 import { ViewToggle } from "../../ViewToggle";
 import { WorkMap } from ".";
@@ -9,9 +10,10 @@ export interface Props {
   tabsState: TabsState;
   timelineAvailable?: boolean;
   view?: WorkMap.View;
+  onExport?: () => void;
 }
 
-export function WorkMapNavigation({ tabsState, timelineAvailable = false, view = "table" }: Props) {
+export function WorkMapNavigation({ tabsState, timelineAvailable = false, view = "table", onExport }: Props) {
   const location = useLocation();
   const tablePath = buildViewPath(location.pathname, location.search, "table");
   const timelinePath = buildViewPath(location.pathname, location.search, "timeline");
@@ -22,17 +24,25 @@ export function WorkMapNavigation({ tabsState, timelineAvailable = false, view =
         <Tabs tabs={tabsState} showBorder={false} />
       </div>
 
-      {timelineAvailable && (
-        <ViewToggle
-          className="my-2 shrink-0"
-          value={view}
-          ariaLabel="Work map view"
-          options={[
-            { value: "table", label: "Table", icon: <IconTable size={14} />, to: tablePath },
-            { value: "timeline", label: "Timeline", icon: <IconTimeline size={14} />, to: timelinePath },
-          ]}
-        />
-      )}
+      <div className="flex items-center gap-2 shrink-0">
+        {timelineAvailable && (
+          <ViewToggle
+            className="my-2"
+            value={view}
+            ariaLabel="Work map view"
+            options={[
+              { value: "table", label: "Table", icon: <IconTable size={14} />, to: tablePath },
+              { value: "timeline", label: "Timeline", icon: <IconTimeline size={14} />, to: timelinePath },
+            ]}
+          />
+        )}
+
+        {onExport && (
+          <SecondaryButton size="xs" icon={IconFileSpreadsheet} onClick={onExport} testId="export-work-map-button">
+            Export
+          </SecondaryButton>
+        )}
+      </div>
     </div>
   );
 }

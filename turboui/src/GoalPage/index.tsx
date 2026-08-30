@@ -23,6 +23,7 @@ import { RichEditorHandlers } from "../RichEditor/useEditor";
 import { StatusBanner } from "../ProjectPageLayout/StatusBanner";
 import { GoalPermissions } from "./types";
 import type { FormattedTimePreferences } from "../FormattedTime";
+import { exportGoalWorkItemsToExcel } from "../MiniWorkMap/exportToExcel";
 
 export namespace GoalPage {
   export interface Space {
@@ -191,6 +192,8 @@ export namespace GoalPage {
     openMoveModal: () => void;
     closeMoveModal: () => void;
 
+    exportExcel: () => void;
+
     onReviewGoal?: () => void;
   };
 }
@@ -209,6 +212,8 @@ function useGoalPageState(props: GoalPage.Props): GoalPage.State {
     isMoveModalOpen,
     openMoveModal: () => setIsMoveModalOpen(true),
     closeMoveModal: () => setIsMoveModalOpen(false),
+
+    exportExcel: () => exportGoalWorkItemsToExcel(props.relatedWorkItems, props.goalName),
   };
 }
 
