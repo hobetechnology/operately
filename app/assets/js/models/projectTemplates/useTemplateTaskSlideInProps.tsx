@@ -56,6 +56,8 @@ export function buildTemplateTaskPageProps(
     statusOptions: ctx.statuses,
     dueDate: undefined,
     onDueDateChange: () => undefined,
+    startDate: undefined,
+    onStartDateChange: () => undefined,
     dueOffsetDays: task.dueOffsetDays,
     onDueOffsetDaysChange: (dueOffsetDays) => {
       void ctx.onTaskUpdate?.(taskId, { dueOffsetDays });

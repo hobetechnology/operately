@@ -141,6 +141,15 @@ function Page() {
     refreshPageData,
   });
 
+  const [startDate, setStartDate] = usePageField({
+    value: ({ task }) => parseContextualDate(task.startDate),
+    update: (v) =>
+      Api.tasks.updateStartDate({ taskId: task.id, startDate: serializeContextualDate(v), type: "project" }),
+    onError: () => showErrorToast("Error", "Failed to update start date."),
+    pageData,
+    refreshPageData,
+  });
+
   const [reminders, setReminders] = usePageField<TaskPage.Reminder[]>({
     value: ({ task }) => Tasks.parseTaskReminders(task.reminders),
     update: (v) =>
@@ -274,6 +283,8 @@ function Page() {
     statusOptions,
     dueDate: dueDate || undefined,
     onDueDateChange: setDueDate,
+    startDate: startDate || undefined,
+    onStartDateChange: setStartDate,
     reminders,
     onRemindersChange: setReminders,
     assignees,

@@ -79,6 +79,8 @@ export namespace TaskPage {
 
     dueDate?: DateField.ContextualDate;
     onDueDateChange: (newDate: DateField.ContextualDate | null) => void;
+    startDate?: DateField.ContextualDate;
+    onStartDateChange: (newDate: DateField.ContextualDate | null) => void;
     reminders: Reminder[];
     onRemindersChange: (reminders: Reminder[]) => void | boolean | Promise<boolean>;
 
@@ -149,6 +151,8 @@ export namespace TaskPage {
     | "statusOptions"
     | "dueDate"
     | "onDueDateChange"
+    | "startDate"
+    | "onStartDateChange"
     | "reminders"
     | "onRemindersChange"
     | "assignees"

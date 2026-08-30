@@ -155,6 +155,7 @@ export const reorderTasksAcrossMilestones = (
           status: null,
           description: null,
           dueDate: null,
+          startDate: null,
           link: "#",
           milestone: originalMilestone,
           type: "project",

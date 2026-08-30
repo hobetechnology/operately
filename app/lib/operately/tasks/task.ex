@@ -13,6 +13,7 @@ defmodule Operately.Tasks.Task do
           size: String.t() | nil,
           description: map() | nil,
           due_date: %Operately.ContextualDates.ContextualDate{} | nil,
+          start_date: %Operately.ContextualDates.ContextualDate{} | nil,
           reminders: [Operately.Tasks.Reminder.t()],
           status: String.t(),
           task_status: Operately.Tasks.Status.t() | nil,
@@ -53,6 +54,7 @@ defmodule Operately.Tasks.Task do
 
     field :deprecated_due_date, :naive_datetime
     embeds_one :due_date, Operately.ContextualDates.ContextualDate, on_replace: :update
+    embeds_one :start_date, Operately.ContextualDates.ContextualDate, on_replace: :update
     embeds_many :reminders, Operately.Tasks.Reminder, on_replace: :delete
 
     embeds_one :task_status, Operately.Tasks.Status, on_replace: :update
@@ -95,6 +97,7 @@ defmodule Operately.Tasks.Task do
       :subscription_list_id
     ])
     |> cast_embed(:due_date)
+    |> cast_embed(:start_date)
     |> cast_embed(:reminders)
     |> cast_embed(:task_status)
     |> put_default_task_status()

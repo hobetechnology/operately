@@ -16,6 +16,7 @@ import { variantFeatures } from "./variantFeatures";
 export function Sidebar(props: TaskPage.ContentState) {
   return (
     <div className="sm:col-span-4 space-y-6 hidden sm:block sm:pl-8" data-test-id="task-sidebar">
+      <StartDate {...props} />
       <DueDate {...props} />
       <Reminders {...props} />
       <Assignees {...props} />
@@ -48,6 +49,23 @@ export function MobileSidebar(props: TaskPage.ContentState) {
         <Milestone {...props} />
       </div>
     </div>
+  );
+}
+
+function StartDate(props: TaskPage.ContentState) {
+  if (props.variant === "template") return null;
+
+  return (
+    <SidebarSection title="Start date">
+      <DateField
+        date={props.startDate ?? null}
+        onDateSelect={props.onStartDateChange}
+        readonly={!props.canEdit}
+        placeholder="Set start date"
+        testId="task-start-date"
+        calendarOnly
+      />
+    </SidebarSection>
   );
 }
 

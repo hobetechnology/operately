@@ -58,6 +58,7 @@ export interface TaskSlideInContext {
   onTaskCreate?: TaskBoardProps["onTaskCreate"];
   onTaskAssigneeChange?: TaskBoardProps["onTaskAssigneeChange"];
   onTaskDueDateChange?: TaskBoardProps["onTaskDueDateChange"];
+  onTaskStartDateChange?: TaskBoardProps["onTaskStartDateChange"];
   onTaskRemindersChange?: TaskBoardProps["onTaskRemindersChange"];
   onTaskStatusChange?: TaskBoardProps["onTaskStatusChange"];
   onTaskMilestoneChange?: (taskId: string, milestone: TaskBoard.Milestone | null) => void;
@@ -93,6 +94,7 @@ export interface KanbanBoardProps {
   onTaskCreate?: TaskBoardProps["onTaskCreate"];
   onTaskAssigneeChange?: TaskBoardProps["onTaskAssigneeChange"];
   onTaskDueDateChange?: TaskBoardProps["onTaskDueDateChange"];
+  onTaskStartDateChange?: TaskBoardProps["onTaskStartDateChange"];
   onTaskDueOffsetDaysChange?: TaskBoardProps["onTaskDueOffsetDaysChange"];
   onTaskRemindersChange?: TaskBoardProps["onTaskRemindersChange"];
   onTaskStatusChange?: TaskBoardProps["onTaskStatusChange"];

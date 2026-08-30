@@ -1,6 +1,6 @@
 import React from "react";
 
-import { TaskBoard, TasksBoardView, useMilestoneFilter, useTaskDisplayMode } from "../TaskBoard";
+import { TaskBoard, TasksBoardView, TasksGanttView, useMilestoneFilter, useTaskDisplayMode } from "../TaskBoard";
 import * as TaskBoardTypes from "../TaskBoard/types";
 
 import type { ProjectPage } from "./index";
@@ -86,6 +86,35 @@ export function TasksSection({ state }: { state: ProjectPage.State }) {
         getTaskPageProps={state.getTaskPageProps}
         canEdit={canEdit}
         onStatusesChange={state.onSaveCustomStatuses}
+      />
+    );
+  }
+
+  if (taskDisplayMode === "gantt") {
+    return (
+      <TasksGanttView
+        displayMode={taskDisplayMode}
+        onDisplayModeChange={handleDisplayModeChange}
+        selectedMilestone={selectedMilestone}
+        onMilestoneFilterChange={onMilestoneFilterChange}
+        canCreateMilestone={canEdit}
+        onCreateMilestone={state.onMilestoneCreate}
+        tasks={tasks}
+        statuses={state.statuses}
+        onTaskAssigneeChange={state.onTaskAssigneeChange}
+        onTaskDueDateChange={state.onTaskDueDateChange}
+        onTaskStartDateChange={state.onTaskStartDateChange}
+        onTaskRemindersChange={state.onTaskRemindersChange}
+        onTaskStatusChange={state.onTaskStatusChange}
+        onTaskMilestoneChange={handleTaskMilestoneChange}
+        onTaskDelete={state.onTaskDelete}
+        milestones={state.milestones}
+        onMilestoneSearch={state.onMilestoneSearch}
+        onTaskDescriptionChange={state.onTaskDescriptionChange}
+        onTaskNameChange={state.onTaskNameChange}
+        richTextHandlers={state.richTextHandlers}
+        assigneePersonSearch={state.assigneePersonSearch}
+        getTaskPageProps={state.getTaskPageProps}
       />
     );
   }

@@ -61,7 +61,7 @@ export function useTaskDisplayMode({
 }
 
 export function parseTaskDisplayMode(value: unknown): TaskDisplayMode | null {
-  if (value === "list" || value === "board") return value;
+  if (value === "list" || value === "board" || value === "gantt") return value;
   return null;
 }
 

@@ -70,6 +70,7 @@ export interface Task {
   milestone: Milestone | null;
   points?: number;
   dueDate: DateField.ContextualDate | null;
+  startDate: DateField.ContextualDate | null;
   dueOffsetDays?: number | null;
   reminders?: TaskPage.Reminder[];
   closedAt?: Date | null;
@@ -157,7 +158,7 @@ export interface FilterCondition {
 
 export type StatusCustomizationStatus = StatusSelector.StatusOption;
 
-export type TaskDisplayMode = "list" | "board";
+export type TaskDisplayMode = "list" | "board" | "gantt";
 
 export interface TaskListSlideInContext {
   tasks: Task[];
@@ -165,6 +166,7 @@ export interface TaskListSlideInContext {
   onTaskCreate?: TaskBoardProps["onTaskCreate"];
   onTaskAssigneeChange?: TaskBoardProps["onTaskAssigneeChange"];
   onTaskDueDateChange?: TaskBoardProps["onTaskDueDateChange"];
+  onTaskStartDateChange?: TaskBoardProps["onTaskStartDateChange"];
   onTaskRemindersChange?: TaskBoardProps["onTaskRemindersChange"];
   onTaskStatusChange?: TaskBoardProps["onTaskStatusChange"];
   onTaskMilestoneChange?: (taskId: string, milestone: Milestone | null) => void;
@@ -189,6 +191,7 @@ export interface TaskBoardProps {
   onMilestoneCreate?: (milestone: NewMilestonePayload) => void;
   onTaskAssigneeChange: (taskId: string, assignees: Person[]) => void;
   onTaskDueDateChange: (taskId: string, dueDate: DateField.ContextualDate | null) => void;
+  onTaskStartDateChange?: (taskId: string, startDate: DateField.ContextualDate | null) => void;
   onTaskDueOffsetDaysChange?: (taskId: string, dueOffsetDays: number | null) => void;
   onTaskRemindersChange?: (taskId: string, reminders: TaskPage.Reminder[]) => Promise<boolean> | boolean;
   onTaskStatusChange: (taskId: string, status: Status | null) => void;

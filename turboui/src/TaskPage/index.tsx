@@ -57,6 +57,8 @@ function useTaskPageState(props: TaskPage.Props): TaskPage.ContentState {
     statusOptions: props.statusOptions,
     dueDate: props.dueDate,
     onDueDateChange: props.onDueDateChange,
+    startDate: props.startDate,
+    onStartDateChange: props.onStartDateChange,
     reminders: props.reminders,
     onRemindersChange: props.onRemindersChange,
     assignees: props.assignees,

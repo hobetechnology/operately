@@ -157,6 +157,7 @@ export function mockTasks(type: "space" | "project"): Types.Task[] {
       hasDescription: true,
       hasComments: true,
       commentCount: 3,
+      startDate: null,
       type,
     },
     {
@@ -171,6 +172,7 @@ export function mockTasks(type: "space" | "project"): Types.Task[] {
       points: 3,
       hasDescription: true,
       hasComments: false,
+      startDate: null,
       type,
     },
     {
@@ -185,6 +187,7 @@ export function mockTasks(type: "space" | "project"): Types.Task[] {
       hasDescription: true,
       hasComments: true,
       dueDate: null,
+      startDate: null,
       type,
     },
     {
@@ -198,6 +201,7 @@ export function mockTasks(type: "space" | "project"): Types.Task[] {
       points: 5,
       hasDescription: false,
       hasComments: false,
+      startDate: null,
       type,
     },
     {
@@ -211,6 +215,7 @@ export function mockTasks(type: "space" | "project"): Types.Task[] {
       points: 3,
       hasDescription: false,
       hasComments: false,
+      startDate: null,
       type,
     },
     {
@@ -225,6 +230,7 @@ export function mockTasks(type: "space" | "project"): Types.Task[] {
       points: 3,
       hasDescription: true,
       hasComments: false,
+      startDate: null,
       type,
     },
     {
@@ -240,6 +246,7 @@ export function mockTasks(type: "space" | "project"): Types.Task[] {
       hasDescription: true,
       hasComments: true,
       commentCount: 5,
+      startDate: null,
       type,
     },
     {
@@ -254,6 +261,7 @@ export function mockTasks(type: "space" | "project"): Types.Task[] {
       points: 8,
       hasDescription: true,
       hasComments: true,
+      startDate: null,
       type,
     },
     {
@@ -267,6 +275,7 @@ export function mockTasks(type: "space" | "project"): Types.Task[] {
       points: 13,
       hasDescription: false,
       hasComments: false,
+      startDate: null,
       type,
     },
     {
@@ -282,6 +291,7 @@ export function mockTasks(type: "space" | "project"): Types.Task[] {
       hasDescription: true,
       hasComments: true,
       commentCount: 2,
+      startDate: null,
       type,
     },
     {
@@ -297,6 +307,7 @@ export function mockTasks(type: "space" | "project"): Types.Task[] {
       hasDescription: true,
       hasComments: true,
       commentCount: 7,
+      startDate: null,
       type,
     },
     {
@@ -310,6 +321,7 @@ export function mockTasks(type: "space" | "project"): Types.Task[] {
       points: 13,
       hasDescription: false,
       hasComments: false,
+      startDate: null,
       type,
     },
     {
@@ -324,6 +336,7 @@ export function mockTasks(type: "space" | "project"): Types.Task[] {
       points: 3,
       hasDescription: true,
       hasComments: false,
+      startDate: null,
       type,
     },
     {
@@ -338,6 +351,7 @@ export function mockTasks(type: "space" | "project"): Types.Task[] {
       points: 8,
       hasDescription: true,
       hasComments: true,
+      startDate: null,
       type,
       commentCount: 1,
     },
@@ -354,6 +368,7 @@ export function mockTasks(type: "space" | "project"): Types.Task[] {
       hasDescription: true,
       hasComments: true,
       commentCount: 9,
+      startDate: null,
       type,
     },
     {
@@ -368,6 +383,7 @@ export function mockTasks(type: "space" | "project"): Types.Task[] {
       points: 5,
       hasDescription: true,
       hasComments: false,
+      startDate: null,
       type,
     },
     {
@@ -382,6 +398,7 @@ export function mockTasks(type: "space" | "project"): Types.Task[] {
       points: 3,
       hasDescription: true,
       hasComments: false,
+      startDate: null,
       type,
     },
     {
@@ -396,6 +413,7 @@ export function mockTasks(type: "space" | "project"): Types.Task[] {
       points: 0,
       hasDescription: false,
       hasComments: false,
+      startDate: null,
       type,
     },
     {
@@ -411,6 +429,7 @@ export function mockTasks(type: "space" | "project"): Types.Task[] {
       hasDescription: true,
       hasComments: true,
       commentCount: 4,
+      startDate: null,
       type,
     },
     {
@@ -425,6 +444,7 @@ export function mockTasks(type: "space" | "project"): Types.Task[] {
       points: 5,
       hasDescription: true,
       hasComments: false,
+      startDate: null,
       type,
     },
     {
@@ -441,6 +461,7 @@ export function mockTasks(type: "space" | "project"): Types.Task[] {
       hasDescription: true,
       hasComments: true,
       commentCount: 6,
+      startDate: null,
       type,
     },
     {
@@ -456,6 +477,7 @@ export function mockTasks(type: "space" | "project"): Types.Task[] {
       points: 3,
       hasDescription: true,
       hasComments: false,
+      startDate: null,
       type,
     },
     {
@@ -472,6 +494,7 @@ export function mockTasks(type: "space" | "project"): Types.Task[] {
       hasDescription: true,
       hasComments: true,
       commentCount: 4,
+      startDate: null,
       type,
     },
     {
@@ -487,6 +510,7 @@ export function mockTasks(type: "space" | "project"): Types.Task[] {
       points: 5,
       hasDescription: true,
       hasComments: false,
+      startDate: null,
       type,
     },
     {
@@ -503,6 +527,7 @@ export function mockTasks(type: "space" | "project"): Types.Task[] {
       hasDescription: true,
       hasComments: true,
       commentCount: 2,
+      startDate: null,
       type,
     },
     {
@@ -518,6 +543,7 @@ export function mockTasks(type: "space" | "project"): Types.Task[] {
       points: 3,
       hasDescription: true,
       hasComments: false,
+      startDate: null,
       type,
     },
   ];

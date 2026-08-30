@@ -10,7 +10,7 @@ defmodule Operately.Projects.Project do
 
   @behaviour WorkMapItem
 
-  @valid_tasks_views [:list, :board]
+  @valid_tasks_views [:list, :board, :gantt]
 
   schema "projects" do
     belongs_to :company, Operately.Companies.Company, foreign_key: :company_id
