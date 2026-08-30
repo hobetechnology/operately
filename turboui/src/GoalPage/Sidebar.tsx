@@ -23,6 +23,7 @@ import {
   IconCircleArrowRight,
   IconCircleCheck,
   IconFileExport,
+  IconFileSpreadsheet,
   IconInfoCircle,
   IconRotateDot,
   IconTrash,
@@ -383,6 +384,13 @@ function Actions(props: GoalPage.State) {
       icon: IconFileExport,
       testId: "export-as-markdown",
       hidden: !props.exportMarkdown,
+    },
+    {
+      type: "action" as const,
+      label: "Export as Excel",
+      onClick: props.exportExcel,
+      icon: IconFileSpreadsheet,
+      testId: "export-as-excel",
     },
     {
       type: "action" as const,
